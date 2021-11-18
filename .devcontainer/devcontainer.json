@@ -1,0 +1,29 @@
+{
+	"name": "satt_infra_base",
+	"dockerFile": "Dockerfile",
+	"workspaceMounts": "source=${localWorkspaceFolder},target=/work,type=bind,consistency=cached",
+	// コンテナ起動時の引数。ここでは.envファイルを指定して環境変数を設定する。
+	"runArgs": [
+		"--env-file",
+		".devcontainer/.env"
+	],
+	"mounts": [
+		"source=//var/run/docker.sock,target=/var/run/docker.sock,type=bind,consistency=consistent", // Remote Container内でDockerを使うには、ホストOSのDocker daemonを使うように設定する。
+		"source=vscode_extensions,target=/root/.vscode-server/extensions,type=volume", // extensionをビルドのたびにインストールしないために設定
+		"source=satt_infra_base_bashhistory,target=/commandhistory,type=volume", // bashヒストリーが残る設定
+	],
+	// vscodeを閉じてもコンテナは終了せずに残す設定
+	"shutdownAction": "none",
+	// vscodeのsettings.jsonの記法で記載し、エディターのデフォルトの設定をする。
+	"settings": {
+		"terminal.integrated.shell.linux": "/bin/bash",
+		"editor.formatOnSave": true
+	},
+	// 共有したいVSCodeエクステンションID。コンテナを作成するときにイントールされる。
+	"extensions": [
+		"hashicorp.terraform",
+		"shd101wyy.markdown-preview-enhanced",
+		"ms-python.python",
+		"eamodio.gitlens"
+	],
+}

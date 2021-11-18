@@ -1,0 +1,20 @@
+# Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# vscode
+*.vscode
+*.code-workspace
+
+# lambda function
+#*.zip
+
+# terragrunt
+**/provider.tf
+*.pem
+.env
+
+**/secrets/*
