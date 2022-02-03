@@ -1,0 +1,13 @@
+name: Bundle/yarn update
+
+# 毎週月曜に実行
+on:
+  push:
+
+jobs:
+  createPullRequest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get current date
+        run: echo PR
