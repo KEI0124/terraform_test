@@ -11,10 +11,3 @@ jobs:
       - name: docker-compose up
         run: |
           echo test
-          
-      - name: Create pull request
-        uses: peter-evans/create-pull-request@v3
-        with:
-          commit-message: Update dependencies ${{ steps.date.outputs.current }}
-          title: Update dependencies (${{ steps.date.outputs.current }})
-          branch: bundle-update-${{ steps.date.outputs.current }}
